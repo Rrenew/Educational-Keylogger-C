@@ -37,8 +37,8 @@ int procurar_teclado(){
                 return fd;
                 }
             }
+            close(fd);
         }
-        close(fd);
     }
     
 
