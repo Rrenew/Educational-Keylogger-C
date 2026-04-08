@@ -35,7 +35,6 @@ int main() {
     }
     
     printf("teclado funcionando, aperta ctrl+c pra parar\n");
-    printf("cada tecla vai ser registrada separada no log\n\n");
     
     FILE *log = fopen("log.txt", "a");
     if(log == NULL) {
