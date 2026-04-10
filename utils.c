@@ -1,4 +1,11 @@
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <linux/input.h>
+#include <string.h>
+#include <sys/ioctl.h>
 #include <time.h>
+
 #include "utils.h"
 
 // funcao pra pegar o horario 
