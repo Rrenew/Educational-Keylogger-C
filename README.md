@@ -1,41 +1,41 @@
-# Keylogger Educacional em C (Linux)
+# Educational Keylogger in C (Linux)
 
-Este projeto é um **keylogger simples desenvolvido em C para sistemas Linux**, com o objetivo **exclusivamente educacional**. Ele demonstra como capturar eventos de teclado diretamente do dispositivo de entrada (`/dev/input/eventX`).
+This project is a **simple keylogger developed in C for Linux systems**, with an **exclusively educational purpose**. It demonstrates how to capture keyboard events directly from the input device (`/dev/input/eventX`).
 
-**Aviso importante:** Este projeto foi criado apenas para fins de estudo sobre sistemas operacionais, dispositivos de entrada e segurança. **Não utilize este código para monitorar usuários sem consentimento.**
-
----
-
-## Objetivos do Projeto
-
-- Entender como o Linux gerencia dispositivos de entrada
-- Trabalhar com leitura de arquivos de dispositivo (`/dev/input`)
-- Manipular eventos de teclado (`struct input_event`)
-- Praticar programação em C de baixo nível
+**Important notice:** This project was created for study purposes only, focusing on operating systems, input devices, and security. **Do not use this code to monitor users without consent.**
 
 ---
 
-##Como Funciona
+## Project Objectives
 
-O programa:
-
-1. Abre o dispositivo de teclado (`/dev/input/event2`)
-2. Lê continuamente eventos de entrada
-3. Identifica teclas pressionadas
-4. Converte códigos de tecla para caracteres
-5. Exibe no terminal e salva em um arquivo (`log.txt`)
+- Understand how Linux manages input devices  
+- Work with device file reading (`/dev/input`)  
+- Handle keyboard events (`struct input_event`)  
+- Practice low-level programming in C  
 
 ---
 
-##Requisitos
+## How It Works
 
-- Linux
-- Permissão de superusuário (root)
-- Compilador GCC
+The program:
+
+1. Opens the keyboard device (`/dev/input/event2`)  
+2. Continuously reads input events  
+3. Identifies pressed keys  
+4. Converts key codes to characters  
+5. Displays them in the terminal and saves them to a file (`log.txt`)  
 
 ---
 
-## Compilação
+## Requirements
+
+- Linux  
+- Superuser (root) permission  
+- GCC compiler  
+
+---
+
+## Compilation
 
 ```bash
 gcc keylogger.c -o keylogger
